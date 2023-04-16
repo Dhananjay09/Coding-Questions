@@ -4,5 +4,5 @@ class Solution:
             return
         self.invertTree(root.left)
         self.invertTree(root.right)
-        root.left, root.right=root.right, root.left
+        root.left, root.right = root.right, root.left
         return root
