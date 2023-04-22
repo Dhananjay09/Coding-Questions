@@ -10,3 +10,13 @@ class Solution:
             if slow == fast:
                 return True
         return False
+
+    def reverseList(self, head):
+        pre = None
+        curr = head
+        while curr:
+            nxt = curr.next
+            curr.next = pre
+            pre = curr
+            curr = nxt
+        return pre
