@@ -11,3 +11,8 @@ class Solution:
             if first_str_dic[s[i]] != t[i] or second_str_dic[t[i]] != s[i]:
                 return False
         return True
+
+
+str1 = "Dhananjay Singh"
+str2 = "Dhananjay Singz"
+print(Solution().isIsomorphic(str1, str2))

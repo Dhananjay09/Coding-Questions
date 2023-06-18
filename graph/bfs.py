@@ -1,10 +1,22 @@
 graph = {
-    '5': ['3', '7'],
-    '3': ['2', '4'],
-    '7': ['8'],
-    '2': [],
-    '4': ['8'],
-    '8': []
+    '5': ['3', '7', '1', '10'],
+    '3': ['2', '4', '23', '45', '100'],
+    '7': ['8', '23', '-56', '45', '78'],
+    '2': ['1', '-5', '56', '67'],
+    '4': ['8', '45', '56', '34', '12'],
+    '8': ['12', '78'],
+    '1': ['-56'],
+    '10': ['12'],
+    '23': ['45'],
+    '45': ['78'],
+    '100': ['34'],
+    '-56': ['23'],
+    '78': ['100'],
+    '-5': ['7', '1'],
+    '56': ['1', '-5'],
+    '67': ['34'],
+    '34': ['67'],
+    '12': ['8']
 }
 
 
@@ -35,28 +47,21 @@ class Graph:
                 self.dfs.append(item)
                 self.calculate_dfs(item, visited=visited)
 
-    def numIslands(self, grid):
-        count = 0
-        for i in range(0, len(grid)):
-            for j in range(0, len(grid)):
-                if grid[i][j] == '1':
-                    if i > 0 and grid[i-1][j] == '1':
-                        continue
-                    elif j > 0 and grid[i][j-1] == '1':
-                        continue
-                    elif i < len(grid)-1 and grid[i+1][j] == '1':
-                        continue
-                    elif j < len(grid)-1 and grid[i][j+1] == '1':
-                        continue
-                    else:
-                        count += 1
-        return count+1
+
+def dfs(g, start, visited):
+    print(start)
+    visited.append(start)
+    for n in g[start]:
+        if n not in visited:
+            dfs(g, n, visited)
 
 
-obj = Graph(graph=graph)
-obj.calculate_bfs('5')
-obj.dfs.append('5')
-obj.calculate_dfs('5', set())
-print(obj.bfs)
-print(obj.dfs)
+#
+# obj = Graph(graph=graph)
+# obj.calculate_bfs('5')
+# obj.dfs.append('5')
+# obj.calculate_dfs('5', set())
+# print(obj.bfs)
+# print(obj.dfs)
 
+print(dfs(graph, '5', []))
