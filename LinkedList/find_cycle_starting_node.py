@@ -18,3 +18,14 @@ class Solution:
             slow = slow.next
             fast = fast.next
         return slow
+
+    def remove_cycle(self, head):
+        starting_index = self.detectCycle(head)
+        if not starting_index:
+            return
+        starting_index.next = None
+        return head
+
+    def maxProduct(self, nums):
+        maxi = INT_MIN;
+        prod = 1;
