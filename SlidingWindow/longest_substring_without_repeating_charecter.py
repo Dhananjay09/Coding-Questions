@@ -7,7 +7,7 @@ class Solution:
         while current < len(s):
             if s[current] in dic:
                 ans = max(ans, len(dic))
-                while(s[start] != s[current]):
+                while s[start] != s[current]:
                     dic.pop(s[start])
                     start+=1
                 dic.pop(s[start])
